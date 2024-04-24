@@ -5,49 +5,46 @@
  * @format
  */
 
-import axios from 'axios';
 import React, {useEffect} from 'react';
 import {Text} from 'react-native';
+import {User} from './src/data/user.type';
+import {getUserTokens} from './src/service/userApi';
+import useManageSecureStorage from './src/hooks/useManageSecureStorage';
+import useAxiosPostsInstance from './src/hooks/useAxiosPostsInstance';
+import {POSTS_ENDPOINT} from './src/service/api.data';
 
 function App(): React.JSX.Element {
+  const {storeUserInfo} = useManageSecureStorage();
+  const {postsAxiosInstance} = useAxiosPostsInstance();
+
   useEffect(() => {
-    async function doGetRequest() {
-      try {
-        let res = await axios.post(
-          'https://backend-practice.euriskomobility.me/login',
-          {
-            email: 'example@example.com',
-            password: 'example_password',
+    const login = async () => {
+      const user: User = {
+        email: 'rita@test.com',
+        password: '1234567890',
+      };
+      const tokens = await getUserTokens(user);
+      console.log(tokens?.accessToken);
+      if (tokens) {
+        storeUserInfo(tokens.accessToken, tokens.refreshToken);
+        const url = new URL(POSTS_ENDPOINT);
+        url.searchParams.append('page', '1');
+        url.searchParams.append('pageSize', '1');
 
-            token_expires_in: '30m',
-          },
+        const res = await postsAxiosInstance.get(
+          `${POSTS_ENDPOINT}?page=1&pageSize=1`,
         );
 
-        let data = res.data;
-        console.log(data.accessToken);
-
-        let oth = await axios.get(
-          'https://backend-practice.euriskomobility.me/posts?page=10&pageSize=1',
-          {
-            headers: {
-              Authorization: `Bearer ${data.accessToken}`,
-            },
-          },
-        );
-
-        console.log(JSON.stringify(oth.data, null, 2));
-      } catch (e) {
-        console.log(`Error: ${e}`);
+        try {
+          const res2 = await postsAxiosInstance.get(
+            `${POSTS_ENDPOINT}?page=1&pageSize=1`,
+          );
+        } catch (e) {
+          console.log(e);
+        }
       }
-      // const axios = require('axios');
-
-      // const res = await axios.get('https://httpbin.org/get',
-      //);
-
-      // console.log(res.data.headers['Test-Header']); // "test-value"
-    }
-
-    doGetRequest();
+    };
+    login();
   }, []);
 
   return <Text>Hello</Text>;
