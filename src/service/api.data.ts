@@ -6,7 +6,7 @@ export const LOGIN_ENDPOINT = '/login';
 export const SIGNUP_ENDPOINT = '/signup';
 export const REFRESH_TOKEN_ENDPOINT = '/refresh-token';
 
-export const TOKEN_EXPIRATION = '1s';
+export const TOKEN_EXPIRATION = '3s';
 
 // This number here is big to make sure that posts for all the needed users are fetched
 // This is because the api doesn't sort the posts

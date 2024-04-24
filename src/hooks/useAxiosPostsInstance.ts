@@ -4,9 +4,10 @@ import useManageSecureStorage from './useManageSecureStorage';
 import UserData from '../data/user.type';
 import {jwtDecode} from 'jwt-decode';
 import {decode} from 'base-64';
+import {refreshUserToken} from '../service/userApi';
 
 const useAxiosPostsInstance = () => {
-  const {getStoredUserInfo} = useManageSecureStorage();
+  const {getStoredUserInfo, storeUserInfo} = useManageSecureStorage();
   const postsAxiosInstance = axios.create({
     baseURL: BASE_URL,
   });
@@ -16,9 +17,19 @@ const useAxiosPostsInstance = () => {
     if (tokens) {
       try {
         global.atob = decode;
-        const test = jwtDecode(tokens.accessToken);
-        console.log(test);
-        req.headers.Authorization = `Bearer ${tokens.accessToken}`;
+        const decodedToken = jwtDecode(tokens.accessToken);
+        if (decodedToken.exp) {
+          const isExpired = Math.floor(Date.now() / 1000) > decodedToken.exp;
+          if (!isExpired) {
+            req.headers.Authorization = `Bearer ${tokens.accessToken}`;
+            return req;
+          }
+          const newToken = await refreshUserToken(tokens.refreshToken);
+          if (newToken) {
+            await storeUserInfo(newToken, tokens.refreshToken);
+            req.headers.Authorization = `Bearer ${newToken}`;
+          }
+        }
       } catch (e) {
         console.log(e);
       }
