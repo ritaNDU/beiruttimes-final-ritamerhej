@@ -1,13 +1,16 @@
 import axios from 'axios';
-import {BASE_URL} from '../service/api.data';
+import {BASE_URL, POST_LIMIT, POSTS_ENDPOINT} from '../service/api.data';
 import useManageSecureStorage from './useManageSecureStorage';
 import UserData from '../data/user.type';
 import {jwtDecode} from 'jwt-decode';
 import {decode} from 'base-64';
 import {refreshUserToken} from '../service/userApi';
+import {Alert} from 'react-native';
+import Post from '../data/post.type';
 
 const useAxiosPostsInstance = () => {
   const {getStoredUserInfo, storeUserInfo} = useManageSecureStorage();
+
   const postsAxiosInstance = axios.create({
     baseURL: BASE_URL,
   });
@@ -37,7 +40,23 @@ const useAxiosPostsInstance = () => {
     return req;
   });
 
-  return {postsAxiosInstance};
+  async function getPostsFromApi(page: string) {
+    const response = await postsAxiosInstance
+      .get(`${POSTS_ENDPOINT}?page=${page}&pageSize=${POST_LIMIT}`)
+      .catch(() =>
+        Alert.alert(
+          "Couldn't get data. Make sure you are connected to the internet and try again.",
+        ),
+      );
+    const posts: Post[] = [];
+    if (response) {
+      const data = response.data;
+      console.log(data);
+    }
+    return posts;
+  }
+
+  return {getPostsFromApi};
 };
 
 export default useAxiosPostsInstance;
