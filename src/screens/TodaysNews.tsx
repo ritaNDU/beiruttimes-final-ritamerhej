@@ -1,10 +1,12 @@
-import {View, Text} from 'react-native';
+import {Text, View} from 'react-native';
 import React from 'react';
+import useManagePostsFetching from '../hooks/useManagePostsFetching';
 
 const TodaysNews = () => {
+  const {handleLoadMore} = useManagePostsFetching();
   return (
     <View>
-      <Text>TodaysNews</Text>
+      <Text>Today's News</Text>
     </View>
   );
 };

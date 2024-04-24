@@ -35,7 +35,6 @@ const SigninForm = () => {
       Alert.alert('Incorrect credentials. Are you registered?');
     }
     setIsLoading(false);
-    console.log('Pressed');
   };
 
   return (

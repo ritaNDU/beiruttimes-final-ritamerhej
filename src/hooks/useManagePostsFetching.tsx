@@ -1,30 +1,67 @@
 import {useEffect, useState} from 'react';
-import {POSTS_LIMIT} from '../service/api.data';
 import useManageAllPosts from './useManageAllPosts';
-import {getPostsFromApi} from '../service/postsApi';
+import useAxiosPostsInstance from './useAxiosPostsInstance';
+import Post from '../data/post.type';
 
 const useManagePostsFetching = () => {
   const {allPosts, addPosts, storePosts} = useManageAllPosts();
+  const [page, setPage] = useState(1);
   const [endReached, setEndReached] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [refresh, setRefresh] = useState(false);
+  const {getPostsFromApi} = useAxiosPostsInstance();
 
-  const handleLoadMore = (page: string) => async () => {
+  const setPosts = (postsData: Post[]) => {
+    const posts: Post[] = [];
+    for (const key in postsData) {
+      const post: Post = {
+        id: postsData[key]._id,
+        title: postsData[key].title,
+        description: postsData[key].description,
+        creator: postsData[key].creator,
+        pubDate: postsData[key].pubDate,
+        image_url: postsData[key].image_url,
+        video_url: postsData[key].video_url,
+        source_url: postsData[key].source_url,
+        language: postsData[key].language,
+        link: postsData[key].link,
+        category: postsData[key].category,
+        keywords: postsData[key].keywords,
+      };
+      posts.push(post);
+    }
+    return posts;
+  };
+
+  const handleLoadMore = async () => {
     setIsLoading(true);
-    const posts = await getPostsFromApi(page);
-    setIsLoading(false);
-    if (posts.length === 0 || allPosts.length % POSTS_LIMIT !== 0) {
+
+    const data = await getPostsFromApi(JSON.stringify(page));
+    const postsData: Post[] = data.results;
+    const paginationData = data.pagination;
+
+    if (!paginationData.hasNextPage) {
       setEndReached(true);
       return;
     }
+
+    const posts: Post[] = setPosts(postsData);
     addPosts(posts);
+
+    setPage(prev => prev + 1);
+
+    setIsLoading(false);
   };
 
   async function handleInitialFetch() {
     setIsLoading(true);
-    const posts = await getPostsFromApi('1');
-    setIsLoading(false);
+    const data = await getPostsFromApi('1');
+    const postsData = data.results;
+
+    const posts: Post[] = setPosts(postsData);
+
     storePosts(posts);
+    setIsLoading(false);
   }
 
   const handleRefresh = async () => {

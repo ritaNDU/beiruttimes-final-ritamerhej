@@ -6,7 +6,6 @@ import {jwtDecode} from 'jwt-decode';
 import {decode} from 'base-64';
 import {refreshUserToken} from '../service/userApi';
 import {Alert} from 'react-native';
-import Post from '../data/post.type';
 
 const useAxiosPostsInstance = () => {
   const {getStoredUserInfo, storeUserInfo} = useManageSecureStorage();
@@ -48,12 +47,10 @@ const useAxiosPostsInstance = () => {
           "Couldn't get data. Make sure you are connected to the internet and try again.",
         ),
       );
-    const posts: Post[] = [];
     if (response) {
       const data = response.data;
-      console.log(data);
+      return data;
     }
-    return posts;
   }
 
   return {getPostsFromApi};
