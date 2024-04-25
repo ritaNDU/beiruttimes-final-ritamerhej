@@ -1,5 +1,26 @@
-import {StyleSheet} from 'react-native';
+import {Platform, StyleSheet, ViewStyle} from 'react-native';
 import theme from '../../styles/theme';
+
+const shadowStyle: ViewStyle =
+  Platform.OS === 'ios'
+    ? {
+        shadowOffset: {
+          width: 0,
+          height: 20,
+        },
+        shadowOpacity: 0.16,
+        shadowRadius: 1.51,
+        elevation: 10,
+      }
+    : {
+        shadowOffset: {
+          width: 0,
+          height: 3,
+        },
+        shadowOpacity: 0.17,
+        shadowRadius: 3.05,
+        elevation: 4,
+      };
 
 const styles = StyleSheet.create({
   buttonGroup: {
@@ -7,17 +28,11 @@ const styles = StyleSheet.create({
   },
   postCardContainer: {
     gap: 20,
-    marginBottom: 10,
+    marginBottom: Platform.OS === 'ios' ? 0 : 20,
     padding: 20,
     backgroundColor: theme.colors.backgroundColor,
-    shadowColor: '#000000',
-    shadowOffset: {
-      width: 0,
-      height: 3,
-    },
-    shadowOpacity: 0.17,
-    shadowRadius: 3.05,
-    elevation: 4,
+    shadowColor: theme.colors.shadowColor,
+    ...shadowStyle,
   },
   title: {
     fontSize: theme.fontSize.normal,

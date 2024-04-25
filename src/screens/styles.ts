@@ -12,6 +12,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: theme.fontSize.large,
+    color: theme.colors.textColor,
     fontWeight: '900',
     marginBottom: 15,
   },

@@ -1,21 +1,23 @@
 import {Platform} from 'react-native';
 
 const android_colors = {
-  primary: '#98A8F8',
-  secondary: '#CDFCF6',
+  primary: '#000',
+  secondary: '#121212',
   backgroundColor: '#fff',
   accentColor: '#fff',
-  activeTabBackground: '#BCCEF8',
-  textColor: '#1A1C1A', //#03001C
+  activeTabBackground: '#ababab',
+  textColor: '#1A1C1A',
+  shadowColor: '#000',
 };
 
 const ios_colors = {
-  primary: '#79AC78',
-  secondary: '#99F3BD',
-  backgroundColor: '#fff',
-  accentColor: '#fff',
-  activeTabBackground: '#B0D9B1',
-  textColor: '#F3CEA1',
+  primary: '#fff',
+  secondary: '#fff',
+  backgroundColor: '#000',
+  accentColor: '#000',
+  activeTabBackground: '#ababab',
+  textColor: '#fff',
+  shadowColor: '#fff',
 };
 
 const colors = Platform.OS === 'ios' ? ios_colors : android_colors;

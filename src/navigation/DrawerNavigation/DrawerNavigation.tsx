@@ -38,6 +38,7 @@ const DrawerNavigation = () => {
         headerStyle: {
           backgroundColor: theme.colors.backgroundColor,
         },
+        headerTintColor: theme.colors.textColor,
         headerRight: setButtonToHeader,
         headerShadowVisible: false,
       }}>
