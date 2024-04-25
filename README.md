@@ -27,7 +27,9 @@ Daily Beirut is a digital newspaper app. To use it, you have to create an accoun
 
 ## How I Got Organized
 
-I drew a plan for my app on pen and paper. I then figured out how the data should flow in the app, and what data was needed and what was its architecture. I had planned plenty of other feature,but had to cut them out for now. I will implement them over time whenever I have some free time. Then, I started implementing each feature one by one.
+I drew a plan for my app on pen and paper. I then figured out how the data should flow in the app, and what data was needed and what was its architecture. I had planned plenty of other feature,but had to cut them out for now due time restrictions. 
+
+I will implement them over time whenever I have some free time.
 
 ## Challenges Faced
 
