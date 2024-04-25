@@ -14,7 +14,7 @@ roy@testing.com
 
 ## Description
 
-Daily Beirut is a digital newspaper app. To use it, you have to create an account login, and start reading all the latest news.
+Daily Beirut is a digital newspaper app. To use it, you have to create an account, login, and start reading all the latest news.
 
 ## How to run the code
 
