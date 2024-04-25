@@ -15,9 +15,10 @@ const useManagePostsFetching = () => {
     const posts: Post[] = [];
     for (const key in postsData) {
       const post: Post = {
-        id: postsData[key]._id,
+        _id: postsData[key]._id,
         title: postsData[key].title,
         description: postsData[key].description,
+        country: postsData[key].country,
         creator: postsData[key].creator,
         pubDate: postsData[key].pubDate,
         image_url: postsData[key].image_url,
@@ -41,11 +42,13 @@ const useManagePostsFetching = () => {
     const paginationData = data.pagination;
 
     if (!paginationData.hasNextPage) {
+      setIsLoading(false);
       setEndReached(true);
       return;
     }
 
     const posts: Post[] = setPosts(postsData);
+
     addPosts(posts);
 
     setPage(prev => prev + 1);
@@ -55,12 +58,15 @@ const useManagePostsFetching = () => {
 
   async function handleInitialFetch() {
     setIsLoading(true);
+    storePosts([]);
     const data = await getPostsFromApi('1');
     const postsData = data.results;
 
     const posts: Post[] = setPosts(postsData);
 
     storePosts(posts);
+    setPage(2);
+
     setIsLoading(false);
   }
 

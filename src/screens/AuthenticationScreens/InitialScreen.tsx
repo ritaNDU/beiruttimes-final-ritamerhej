@@ -2,7 +2,7 @@ import {View} from 'react-native';
 import React from 'react';
 import AuthenticationButtonGroup from '../../components/molecules/AuthenticationButtonGroup';
 import {useNavigation} from '@react-navigation/native';
-import {NativeStackNavigatorNavigationProps} from '../../navigtion/NativeStackNavigation/NativeStackNavigator.types';
+import {NativeStackNavigatorNavigationProps} from '../../navigation/NativeStackNavigation/NativeStackNavigator.types';
 
 const InitialScreen = () => {
   const navigation = useNavigation<NativeStackNavigatorNavigationProps>();

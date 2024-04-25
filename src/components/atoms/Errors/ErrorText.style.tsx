@@ -1,7 +1,10 @@
 import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
-  icons: {width: 27, height: 27},
+  error: {
+    color: 'black',
+    fontWeight: '900',
+  },
 });
 
 export default styles;

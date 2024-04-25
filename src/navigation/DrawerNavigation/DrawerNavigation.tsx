@@ -1,12 +1,13 @@
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import React from 'react';
-import NewsDescription from '../../screens/NewsDescription';
 import NewsDetails from '../../screens/NewsDetails';
-import TabsNavigation from '../TabsNavigation/TabsNavigation';
 import useManageUser from '../../hooks/useManageUser';
 import useManageSecureStorage from '../../hooks/useManageSecureStorage';
 import {Alert} from 'react-native';
 import NavigationButton from '../../components/atoms/Buttons/NavigationButton';
+import TodaysNews from '../../screens/TodaysNews';
+import AllNews from '../../screens/Categories/AllNewsCategory';
+import LebanonCategory from '../../screens/Categories/LebanonCategory';
 
 const Drawer = createDrawerNavigator();
 
@@ -36,17 +37,19 @@ const DrawerNavigation = () => {
         headerShadowVisible: false,
       }}>
       <Drawer.Screen
-        name="Tabs"
-        component={TabsNavigation}
+        name="NewsToday"
+        component={TodaysNews}
         options={{title: 'News'}}
       />
       <Drawer.Screen
-        name="NewsDescription"
-        component={NewsDescription}
-        options={{
-          drawerItemStyle: {display: 'none'},
-          headerShown: false,
-        }}
+        name="AllNews"
+        component={AllNews}
+        options={{title: 'All News'}}
+      />
+      <Drawer.Screen
+        name="LebanonNews"
+        component={LebanonCategory}
+        options={{title: 'Lebanon'}}
       />
       <Drawer.Screen
         name="NewsDetails"

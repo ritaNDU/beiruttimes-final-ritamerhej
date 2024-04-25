@@ -8,7 +8,7 @@ import {SignupSchema} from '../../data/ValidationSchemas/signupSchema';
 import {InitialSignupFormType} from '../../data/formsData.types';
 import {useNavigation} from '@react-navigation/native';
 import NavigationButton from '../atoms/Buttons/NavigationButton';
-import {NativeStackNavigatorNavigationProps} from '../../navigtion/NativeStackNavigation/NativeStackNavigator.types';
+import {NativeStackNavigatorNavigationProps} from '../../navigation/NativeStackNavigation/NativeStackNavigator.types';
 import {User} from '../../data/user.type';
 import {createNewUser} from '../../service/userApi';
 import {Alert} from 'react-native';

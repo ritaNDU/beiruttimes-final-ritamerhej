@@ -2,7 +2,7 @@ import React from 'react';
 import SigninForm from '../../components/molecules/SigninForm';
 import {useNavigation} from '@react-navigation/native';
 import AuthenticationScreensTemplate from '../../components/templates/AuthenticationScreensTemplate';
-import {NativeStackNavigatorNavigationProps} from '../../navigtion/NativeStackNavigation/NativeStackNavigator.types';
+import {NativeStackNavigatorNavigationProps} from '../../navigation/NativeStackNavigation/NativeStackNavigator.types';
 import NavigationButton from '../../components/atoms/Buttons/NavigationButton';
 
 const SignInScreen = () => {

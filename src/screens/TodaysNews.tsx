@@ -1,13 +1,24 @@
-import {Text, View} from 'react-native';
+import {ScrollView, Text} from 'react-native';
 import React from 'react';
 import useManagePostsFetching from '../hooks/useManagePostsFetching';
+import ShortPostsList from '../components/organisms/ShortPostsList';
+import Top3PostsList from '../components/templates/Top3PostsList';
 
 const TodaysNews = () => {
-  const {handleLoadMore} = useManagePostsFetching();
+  const {allPosts} = useManagePostsFetching();
+
+  //Here I didn't use useMemo because I know
+  const newsToday = allPosts.filter(post => post.category.includes('top'));
+
+  const top3Post = newsToday.slice(0, 3);
+
   return (
-    <View>
-      <Text>Today's News</Text>
-    </View>
+    <ScrollView>
+      <Text>Top Posts</Text>
+      <Top3PostsList posts={top3Post} />
+      <Text>What's Happening Today</Text>
+      <ShortPostsList posts={newsToday} />
+    </ScrollView>
   );
 };
 

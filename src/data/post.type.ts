@@ -1,7 +1,8 @@
 type Post = {
-  id: string;
+  _id: string;
   title: string;
   description: string;
+  country: string[];
   creator: string[];
   pubDate: string;
   image_url: string;
