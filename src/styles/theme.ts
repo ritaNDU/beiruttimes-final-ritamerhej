@@ -1,5 +1,7 @@
 import {Platform} from 'react-native';
 
+// The point is to have dark mode on ios and light mode on android
+
 const android_colors = {
   primary: '#000',
   secondary: '#121212',

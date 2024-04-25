@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
   },
   postCardContainer: {
     gap: 20,
-    marginBottom: Platform.OS === 'ios' ? 0 : 20,
+    marginBottom: Platform.OS === 'ios' ? 0 : 12,
     padding: 20,
     backgroundColor: theme.colors.backgroundColor,
     shadowColor: theme.colors.shadowColor,

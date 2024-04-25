@@ -23,19 +23,20 @@ const PostsList = ({
 }: Props) => {
   const keyExtractor = (item: Post) => item._id;
 
+  const renderItem = itemData => {
+    return (
+      <View>
+        <PostCard
+          title={itemData.item.title}
+          imageUrl={itemData.item.image_url}
+          postId={itemData.item._id}
+        />
+      </View>
+    );
+  };
   return (
     <FlashList
-      renderItem={itemData => {
-        return (
-          <View>
-            <PostCard
-              title={itemData.item.title}
-              imageUrl={itemData.item.image_url}
-              postId={itemData.item._id}
-            />
-          </View>
-        );
-      }}
+      renderItem={renderItem}
       data={posts}
       keyExtractor={keyExtractor}
       refreshing={isRefreshing}
