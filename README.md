@@ -60,6 +60,7 @@ It is divided into:
 1. **atoms/** which is where the smallest pieces of components like buttons are implemented.
 2. **molecules/** which is where the atoms are used to create the structures that need to be used in the interface, like card components for example that specify how a single card should be rendered.
 3. **organisms/** is where molecules are used to create features for the app.
+4. **templates/** is where all templates are found.
 
 ### The hooks/ folder:
 
