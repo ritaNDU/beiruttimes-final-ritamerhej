@@ -23,6 +23,10 @@ const shadowStyle: ViewStyle =
       };
 
 const styles = StyleSheet.create({
+  submitButton: {
+    borderWidth: 2,
+    borderColor: '#000',
+  },
   buttonGroup: {
     gap: 10,
   },

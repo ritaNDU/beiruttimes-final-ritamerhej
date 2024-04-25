@@ -10,7 +10,7 @@ const Loading = () => {
         style={styles.image}
         resizeMode="contain"
       /> */}
-      <ActivityIndicator size={30} color="red" />
+      <ActivityIndicator size={30} color="#000" />
     </View>
   );
 };

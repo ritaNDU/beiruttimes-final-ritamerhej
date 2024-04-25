@@ -8,6 +8,7 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     borderWidth: 0.5,
     borderRadius: 10,
+    color: '#000',
   },
 });
 

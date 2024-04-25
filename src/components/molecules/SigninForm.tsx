@@ -11,6 +11,7 @@ import NavigationButton from '../atoms/Buttons/NavigationButton';
 import {getUserTokens} from '../../service/userApi';
 import useManageSecureStorage from '../../hooks/useManageSecureStorage';
 import {Alert} from 'react-native';
+import styles from './molecules.styles';
 
 const handleSubmit =
   (submitFunction: (() => Promise<void>) & (() => Promise<any>)) => () => {
@@ -65,6 +66,7 @@ const SigninForm = () => {
             onPress={handleSubmit(submitForm)}
             name="Submit"
             isLoading={isLoading}
+            styleProp={styles.submitButton}
           />
         </>
       )}

@@ -12,6 +12,7 @@ import {NativeStackNavigatorNavigationProps} from '../../navigation/NativeStackN
 import {User} from '../../data/user.type';
 import {createNewUser} from '../../service/userApi';
 import {Alert} from 'react-native';
+import styles from './molecules.styles';
 
 const handleSubmit =
   (submitFunction: (() => Promise<void>) & (() => Promise<any>)) => () => {
@@ -76,6 +77,7 @@ const SignupForm = () => {
             onPress={handleSubmit(submitForm)}
             name="Submit"
             isLoading={isLoading}
+            styleProp={styles.submitButton}
           />
         </>
       )}

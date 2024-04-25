@@ -4,6 +4,7 @@ import {useNavigation} from '@react-navigation/native';
 import AuthenticationScreensTemplate from '../../components/templates/AuthenticationScreensTemplate';
 import {NativeStackNavigatorNavigationProps} from '../../navigation/NativeStackNavigation/NativeStackNavigator.types';
 import NavigationButton from '../../components/atoms/Buttons/NavigationButton';
+import styles from '../../components/molecules/molecules.styles';
 
 const SignInScreen = () => {
   const navigation = useNavigation<NativeStackNavigatorNavigationProps>();
@@ -15,7 +16,11 @@ const SignInScreen = () => {
     <AuthenticationScreensTemplate name="Sign In">
       <>
         <SigninForm />
-        <NavigationButton name="Create account" onPress={goToSignup} />
+        <NavigationButton
+          name="Create account"
+          onPress={goToSignup}
+          styleProp={styles.submitButton}
+        />
       </>
     </AuthenticationScreensTemplate>
   );

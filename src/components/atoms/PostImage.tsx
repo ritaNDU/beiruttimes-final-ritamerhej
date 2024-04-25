@@ -16,7 +16,7 @@ const PostImage = ({imageUrl}: Props) => {
         />
       ) : (
         <Image
-          source={require('../../assets/catAvatar.png')}
+          source={require('../../assets/authenticationbackground.jpg')}
           style={styles.imageStyle}
         />
       )}

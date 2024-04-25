@@ -4,6 +4,7 @@ import NativeStackNavigator from './NativeStackNavigation/NativeStackNavigator';
 import DrawerNavigation from './DrawerNavigation/DrawerNavigation';
 import Loading from '../components/templates/Loading';
 import useManageUser from '../hooks/useManageUser';
+import BootSplash from 'react-native-bootsplash';
 
 const MainNavigator = () => {
   const {getStoredUserInfo} = useManageSecureStorage();
@@ -20,6 +21,7 @@ const MainNavigator = () => {
       ) {
         signUserIn();
       }
+      await BootSplash.hide({fade: true});
       setIsLoading(false);
     }
     getToken();
