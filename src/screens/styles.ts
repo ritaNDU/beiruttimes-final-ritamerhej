@@ -15,5 +15,12 @@ const styles = StyleSheet.create({
     fontWeight: '900',
     marginBottom: 15,
   },
+  newsDetailsContainer: {flex: 1, backgroundColor: 'white'},
+  goBackButton: {
+    position: 'absolute',
+    top: 10,
+    left: 10,
+    paddingHorizontal: 10,
+  },
 });
 export default styles;

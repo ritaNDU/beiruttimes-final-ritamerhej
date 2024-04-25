@@ -8,9 +8,9 @@ import {
   DrawerNavigatorPropsList,
 } from '../navigation/DrawerNavigation/DrawerNavigation.types';
 import Post from '../data/post.type';
-import PostHeader from '../components/molecules/PostHeader';
 import PostDetails from '../components/molecules/PostDetails';
 import NavigationButton from '../components/atoms/Buttons/NavigationButton';
+import styles from './styles';
 
 const NewsDetails = () => {
   const {allPosts} = useManageAllPosts();
@@ -24,9 +24,7 @@ const NewsDetails = () => {
     navigation.goBack();
   };
   return (
-    <ScrollView
-      style={{flex: 1, backgroundColor: 'white'}}
-      contentContainerStyle={{gap: 5}}>
+    <ScrollView style={styles.newsDetailsContainer}>
       <View>
         {post ? (
           <PostDetails
@@ -35,12 +33,17 @@ const NewsDetails = () => {
             image_url={post.image_url}
             description={post.description}
             link={post.link}
+            source={post.source_url}
           />
         ) : (
           <Text>Check your internet connection and try again.</Text>
         )}
       </View>
-      <NavigationButton name="Go back" onPress={goBack} />
+      <NavigationButton
+        name="Go back"
+        onPress={goBack}
+        styleProp={styles.goBackButton}
+      />
     </ScrollView>
   );
 };

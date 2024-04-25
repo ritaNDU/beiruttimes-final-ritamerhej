@@ -2,6 +2,7 @@ import {Text, Linking, View} from 'react-native';
 import React from 'react';
 import PostImage from '../atoms/PostImage';
 import NavigationButton from '../atoms/Buttons/NavigationButton';
+import styles from './molecules.styles';
 
 type Props = {
   title: string;
@@ -9,19 +10,31 @@ type Props = {
   image_url: string;
   description: string;
   link: string;
+  source: string;
 };
-const PostDetails = ({title, pubDate, image_url, description, link}: Props) => {
+const PostDetails = ({
+  title,
+  pubDate,
+  image_url,
+  description,
+  link,
+  source,
+}: Props) => {
   const goToUrl = () => {
     Linking.openURL(link);
   };
   return (
-    <View>
+    <View style={styles.postDetailsContainer}>
       <PostImage imageUrl={image_url} />
-      <Text>{title}</Text>
-      <Text>{pubDate}</Text>
-      <Text>{description}</Text>
-      <Text>Read full article at: </Text>
-      <NavigationButton name={link} onPress={goToUrl} />
+      <View style={styles.titleContainer}>
+        <Text style={styles.postDetailsTitle}>{title}</Text>
+        <Text style={styles.publicationDate}>Published on: {pubDate}</Text>
+      </View>
+      <Text style={styles.decription}>{description}</Text>
+      <View style={styles.readArticleContainer}>
+        <Text>Read full article at: </Text>
+        <NavigationButton name={source} onPress={goToUrl} />
+      </View>
     </View>
   );
 };

@@ -24,8 +24,27 @@ const styles = StyleSheet.create({
     color: theme.colors.textColor,
   },
 
-  postDetailsContainer: {
-    padding: 10,
+  postDetailsContainer: {gap: 20},
+  titleContainer: {
+    paddingHorizontal: 7,
+    gap: 3,
+  },
+  postDetailsTitle: {
+    fontSize: theme.fontSize.large,
+    color: theme.colors.textColor,
+  },
+  publicationDate: {
+    fontSize: theme.fontSize.small,
+    fontWeight: '300',
+  },
+  decription: {
+    fontSize: theme.fontSize.normal,
+    paddingHorizontal: 7,
+    fontWeight: '500',
+  },
+  readArticleContainer: {
+    gap: 5,
+    paddingHorizontal: 7,
   },
 });
 

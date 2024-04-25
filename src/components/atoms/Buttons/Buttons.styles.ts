@@ -24,6 +24,7 @@ const styles = StyleSheet.create({
     ...commonButtonStyles,
     flexDirection: 'row',
     gap: 4,
+    marginBottom: 15,
   },
 
   loadMoreButtonContainer: {

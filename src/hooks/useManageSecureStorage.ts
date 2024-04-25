@@ -20,15 +20,18 @@ export default function useManageSecureStorage() {
   }
 
   async function getStoredUserInfo() {
-    const accessToken = await RNSecureStorage.getItem('accessToken');
-    const refreshToken = await RNSecureStorage.getItem('refreshToken');
+    try {
+      const accessToken = await RNSecureStorage.getItem('accessToken');
+      const refreshToken = await RNSecureStorage.getItem('refreshToken');
 
-    const userInfo: UserData = {
-      accessToken: accessToken ? JSON.parse(accessToken) : '',
-      refreshToken: refreshToken ? JSON.parse(refreshToken) : '',
-    };
-
-    return userInfo;
+      const userInfo: UserData = {
+        accessToken: accessToken ? JSON.parse(accessToken) : '',
+        refreshToken: refreshToken ? JSON.parse(refreshToken) : '',
+      };
+      return userInfo;
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   async function removeUserInfo() {
