@@ -10,16 +10,12 @@ import {
 import Post from '../data/post.type';
 import PostHeader from '../components/molecules/PostHeader';
 import PostDetails from '../components/molecules/PostDetails';
+import NavigationButton from '../components/atoms/Buttons/NavigationButton';
 
 const NewsDetails = () => {
   const {allPosts} = useManageAllPosts();
   const {params} =
-    useRoute<
-      RouteProp<
-        DrawerNavigatorPropsList,
-        'LebanonNews' | 'AllNews' | 'NewsToday'
-      >
-    >();
+    useRoute<RouteProp<DrawerNavigatorPropsList, 'AllNews' | 'NewsToday'>>();
   const navigation = useNavigation<DrawerNavigatorNavigationProps>();
 
   const {id} = params ?? {id: ''};
@@ -28,8 +24,9 @@ const NewsDetails = () => {
     navigation.goBack();
   };
   return (
-    <ScrollView style={{flex: 1, backgroundColor: 'white'}}>
-      <PostHeader handleGoBack={goBack} isPostAvailable={post ? true : false} />
+    <ScrollView
+      style={{flex: 1, backgroundColor: 'white'}}
+      contentContainerStyle={{gap: 5}}>
       <View>
         {post ? (
           <PostDetails
@@ -43,6 +40,7 @@ const NewsDetails = () => {
           <Text>Check your internet connection and try again.</Text>
         )}
       </View>
+      <NavigationButton name="Go back" onPress={goBack} />
     </ScrollView>
   );
 };

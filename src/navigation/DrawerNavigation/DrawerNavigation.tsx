@@ -7,8 +7,8 @@ import {Alert} from 'react-native';
 import NavigationButton from '../../components/atoms/Buttons/NavigationButton';
 import TodaysNews from '../../screens/TodaysNews';
 import AllNews from '../../screens/Categories/AllNewsCategory';
-import LebanonCategory from '../../screens/Categories/LebanonCategory';
 import theme from '../../styles/theme';
+import styles from './styles';
 
 const Drawer = createDrawerNavigator();
 
@@ -23,7 +23,11 @@ const DrawerNavigation = () => {
   };
 
   const setButtonToHeader = () => (
-    <NavigationButton name="Sign Out" onPress={handleSignout} />
+    <NavigationButton
+      name="Sign Out"
+      onPress={handleSignout}
+      styleProp={styles.signoutButtonStyle}
+    />
   );
   return (
     <Drawer.Navigator
@@ -40,17 +44,12 @@ const DrawerNavigation = () => {
       <Drawer.Screen
         name="NewsToday"
         component={TodaysNews}
-        options={{title: 'News'}}
+        options={{title: 'News', headerTitleStyle: {display: 'none'}}}
       />
       <Drawer.Screen
         name="AllNews"
         component={AllNews}
         options={{title: 'All News'}}
-      />
-      <Drawer.Screen
-        name="LebanonNews"
-        component={LebanonCategory}
-        options={{title: 'Lebanon'}}
       />
       <Drawer.Screen
         name="NewsDetails"

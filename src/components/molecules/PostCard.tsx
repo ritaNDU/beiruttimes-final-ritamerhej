@@ -3,6 +3,7 @@ import React from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {DrawerNavigatorNavigationProps} from '../../navigation/DrawerNavigation/DrawerNavigation.types';
 import PostImage from '../atoms/PostImage';
+import styles from './molecules.styles';
 
 type Props = {
   title: string;
@@ -15,9 +16,9 @@ const PostCard = ({title, imageUrl, postId}: Props) => {
     navigation.navigate('NewsDetails', {id: postId});
   };
   return (
-    <Pressable onPress={navigateToDetails}>
+    <Pressable onPress={navigateToDetails} style={styles.postCardContainer}>
       <PostImage imageUrl={imageUrl} />
-      <Text>{title}</Text>
+      <Text style={styles.title}>{title}</Text>
     </Pressable>
   );
 };

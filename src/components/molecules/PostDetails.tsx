@@ -16,9 +16,9 @@ const PostDetails = ({title, pubDate, image_url, description, link}: Props) => {
   };
   return (
     <View>
+      <PostImage imageUrl={image_url} />
       <Text>{title}</Text>
       <Text>{pubDate}</Text>
-      <PostImage imageUrl={image_url} />
       <Text>{description}</Text>
       <Text>Read full article at: </Text>
       <NavigationButton name={link} onPress={goToUrl} />
