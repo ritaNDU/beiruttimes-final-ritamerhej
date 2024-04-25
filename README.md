@@ -96,4 +96,4 @@ All api functions are implemented here, as well as interceptors.
 
 ## Attribution
 
-Image by [freepik](https://www.freepik.com/free-photo/old-texture-newspapers-stack-arrangement_23994263.htm#fromView=search&page=1&position=46&uuid=331635b2-2b2f-42bd-8c4e-cff0f529397f)
+The background image used for the login and signup screens is made by [freepik](https://www.freepik.com/free-photo/old-texture-newspapers-stack-arrangement_23994263.htm#fromView=search&page=1&position=46&uuid=331635b2-2b2f-42bd-8c4e-cff0f529397f)
