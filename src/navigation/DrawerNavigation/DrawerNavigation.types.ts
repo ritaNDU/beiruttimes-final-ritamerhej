@@ -3,9 +3,9 @@ import {DrawerNavigationProp} from '@react-navigation/drawer';
 
 export type DrawerNavigatorPropsList = {
   NewsToday: undefined;
-  AllNews: {id: string};
+  AllNews: undefined;
   LebanonNews: undefined;
-  NewsDetails: undefined;
+  NewsDetails: {id: string};
 };
 
 export type DrawerNavigatorNavigationProps =

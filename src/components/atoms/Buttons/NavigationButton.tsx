@@ -6,6 +6,7 @@ import {
   ViewStyle,
 } from 'react-native';
 import React from 'react';
+import styles from './Buttons.styles';
 
 type Props = {
   name: string;
@@ -15,8 +16,10 @@ type Props = {
 };
 const NavigationButton = ({name, onPress, isLoading, styleProp}: Props) => {
   return (
-    <Pressable onPress={onPress} style={[styleProp]}>
-      <Text>{name}</Text>
+    <Pressable
+      onPress={onPress}
+      style={[styles.navigationButtonContainer, styleProp]}>
+      <Text style={styles.navigationButtonText}>{name}</Text>
       {isLoading && <ActivityIndicator size={'small'} />}
     </Pressable>
   );

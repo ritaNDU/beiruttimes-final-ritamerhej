@@ -14,6 +14,7 @@ const ShortPostsList = ({posts}: Props) => {
             key={post._id}
             title={post.title}
             imageUrl={post.image_url}
+            postId={post._id}
           />
         );
       })}

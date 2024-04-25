@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import theme from '../../styles/theme';
 
 const styles = StyleSheet.create({
   image: {
@@ -24,7 +25,7 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   title: {
-    fontSize: 10,
+    fontSize: theme.fontSize.large,
     color: 'black',
     fontWeight: '700',
   },

@@ -31,6 +31,7 @@ const PostsList = ({
             <PostCard
               title={itemData.item.title}
               imageUrl={itemData.item.image_url}
+              postId={itemData.item._id}
             />
           </View>
         );

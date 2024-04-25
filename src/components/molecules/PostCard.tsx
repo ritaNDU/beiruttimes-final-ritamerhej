@@ -1,23 +1,24 @@
-import {View, Text, Image} from 'react-native';
+import {Text, Pressable} from 'react-native';
 import React from 'react';
+import {useNavigation} from '@react-navigation/native';
+import {DrawerNavigatorNavigationProps} from '../../navigation/DrawerNavigation/DrawerNavigation.types';
+import PostImage from '../atoms/PostImage';
 
 type Props = {
   title: string;
   imageUrl?: string;
+  postId: string;
 };
-const PostCard = ({title, imageUrl}: Props) => {
+const PostCard = ({title, imageUrl, postId}: Props) => {
+  const navigation = useNavigation<DrawerNavigatorNavigationProps>();
+  const navigateToDetails = () => {
+    navigation.navigate('NewsDetails', {id: postId});
+  };
   return (
-    <View>
-      {imageUrl !== null ? (
-        <Image source={{uri: imageUrl}} style={{width: 100, height: 100}} />
-      ) : (
-        <Image
-          source={require('../../assets/catAvatar.png')}
-          style={{width: 100, height: 100}}
-        />
-      )}
+    <Pressable onPress={navigateToDetails}>
+      <PostImage imageUrl={imageUrl} />
       <Text>{title}</Text>
-    </View>
+    </Pressable>
   );
 };
 

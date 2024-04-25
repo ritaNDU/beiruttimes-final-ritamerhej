@@ -8,6 +8,7 @@ import NavigationButton from '../../components/atoms/Buttons/NavigationButton';
 import TodaysNews from '../../screens/TodaysNews';
 import AllNews from '../../screens/Categories/AllNewsCategory';
 import LebanonCategory from '../../screens/Categories/LebanonCategory';
+import theme from '../../styles/theme';
 
 const Drawer = createDrawerNavigator();
 
@@ -28,10 +29,10 @@ const DrawerNavigation = () => {
     <Drawer.Navigator
       screenOptions={{
         drawerContentStyle: {backgroundColor: '#fff'},
-        // drawerActiveBackgroundColor: theme.colors.activeTabBackground,
-        // drawerActiveTintColor: theme.colors.textColor,
+        drawerActiveBackgroundColor: theme.colors.activeTabBackground,
+        drawerActiveTintColor: theme.colors.textColor,
         headerStyle: {
-          // backgroundColor: theme.colors.backgroundColor,
+          backgroundColor: theme.colors.backgroundColor,
         },
         headerRight: setButtonToHeader,
         headerShadowVisible: false,
