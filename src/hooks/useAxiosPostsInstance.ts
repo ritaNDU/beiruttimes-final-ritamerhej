@@ -15,7 +15,7 @@ const useAxiosPostsInstance = () => {
   });
 
   postsAxiosInstance.interceptors.request.use(async req => {
-    const tokens: UserData = await getStoredUserInfo();
+    const tokens: UserData | undefined = await getStoredUserInfo();
     if (tokens) {
       try {
         global.atob = decode;
