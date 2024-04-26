@@ -53,6 +53,6 @@ export async function refreshUserToken(refreshToken: string) {
       return newAccessToken;
     }
   } catch (e) {
-    Alert.alert('An error occured. You will be logged out.');
+    Alert.alert('An error occured. Try again or Logout.');
   }
 }
