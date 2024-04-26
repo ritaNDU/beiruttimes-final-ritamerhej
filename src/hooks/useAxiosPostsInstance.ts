@@ -21,7 +21,7 @@ const useAxiosPostsInstance = () => {
         global.atob = decode;
         const decodedToken = jwtDecode(tokens.accessToken);
         if (decodedToken.exp) {
-          const isExpired = Math.floor(Date.now() / 1000) > decodedToken.exp;
+          const isExpired = Math.floor(Date.now() / 1000) >= decodedToken.exp;
           if (!isExpired) {
             req.headers.Authorization = `Bearer ${tokens.accessToken}`;
             return req;
