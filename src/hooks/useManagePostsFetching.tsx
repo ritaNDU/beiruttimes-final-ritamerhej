@@ -2,7 +2,6 @@ import {useEffect, useState} from 'react';
 import useManageAllPosts from './useManageAllPosts';
 import useAxiosPostsInstance from './useAxiosPostsInstance';
 import Post from '../data/post.type';
-import {POST_LIMIT} from '../service/api.data';
 
 const useManagePostsFetching = () => {
   const {allPosts, addPosts, storePosts} = useManageAllPosts();
