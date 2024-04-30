@@ -1,5 +1,5 @@
 import React from 'react';
-import SignupForm from '../../components/molecules/SignupForm';
+import SignupForm from '../../components/organisms/SignupForm';
 import AuthenticationScreensTemplate from '../../components/templates/AuthenticationScreensTemplate';
 
 const SignUpScreen = () => {

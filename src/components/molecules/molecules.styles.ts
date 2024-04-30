@@ -27,9 +27,6 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: '#000',
   },
-  buttonGroup: {
-    gap: 10,
-  },
   articleContentContainer: {padding: 5, gap: 20},
   postCardContainer: {
     gap: 20,

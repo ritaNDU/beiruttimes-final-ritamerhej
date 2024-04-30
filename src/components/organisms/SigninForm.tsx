@@ -9,7 +9,7 @@ import useManageUser from '../../hooks/useManageUser';
 import NavigationButton from '../atoms/Buttons/NavigationButton';
 import {getUserTokens} from '../../service/userApi';
 import useManageSecureStorage from '../../hooks/useManageSecureStorage';
-import styles from './molecules.styles';
+import styles from '../molecules/molecules.styles';
 
 const handleSubmit =
   (submitFunction: (() => Promise<void>) & (() => Promise<any>)) => () => {

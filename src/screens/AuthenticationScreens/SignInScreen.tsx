@@ -1,5 +1,5 @@
 import React from 'react';
-import SigninForm from '../../components/molecules/SigninForm';
+import SigninForm from '../../components/organisms/SigninForm';
 import {useNavigation} from '@react-navigation/native';
 import AuthenticationScreensTemplate from '../../components/templates/AuthenticationScreensTemplate';
 import {NativeStackNavigatorNavigationProps} from '../../navigation/NativeStackNavigation/NativeStackNavigator.types';

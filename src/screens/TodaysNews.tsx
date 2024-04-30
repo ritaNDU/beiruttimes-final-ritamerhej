@@ -27,9 +27,7 @@ const TodaysNews = () => {
         {top3Post.length === 0 ? (
           <ActivityIndicator color={theme.colors.textColor} />
         ) : (
-          <>
-            <Top3PostsList posts={top3Post} />
-          </>
+          <Top3PostsList posts={top3Post} />
         )}
       </View>
       <View>

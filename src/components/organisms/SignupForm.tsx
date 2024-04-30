@@ -10,7 +10,7 @@ import NavigationButton from '../atoms/Buttons/NavigationButton';
 import {NativeStackNavigatorNavigationProps} from '../../navigation/NativeStackNavigation/NativeStackNavigator.types';
 import {User} from '../../data/user.type';
 import {createNewUser} from '../../service/userApi';
-import styles from './molecules.styles';
+import styles from '../molecules/molecules.styles';
 
 const handleSubmit =
   (submitFunction: (() => Promise<void>) & (() => Promise<any>)) => () => {

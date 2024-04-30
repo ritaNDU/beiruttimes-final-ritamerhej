@@ -4,7 +4,6 @@ import {Platform} from 'react-native';
 
 const android_colors = {
   primary: '#000',
-  secondary: '#121212',
   backgroundColor: '#fff',
   accentColor: '#fff',
   activeTabBackground: '#ababab',
@@ -14,7 +13,6 @@ const android_colors = {
 
 const ios_colors = {
   primary: '#fff',
-  secondary: '#fff',
   backgroundColor: '#000',
   accentColor: '#000',
   activeTabBackground: '#ababab',
@@ -29,7 +27,6 @@ const theme = {
     small: 10,
     normal: 15,
     large: 22,
-    extraLarge: 30,
   },
   colors: {
     ...colors,
