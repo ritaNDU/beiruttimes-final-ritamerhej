@@ -45,7 +45,7 @@ const PostsList = ({
       refreshing={isRefreshing}
       onRefresh={onRefresh}
       onEndReached={handleLoadMore}
-      estimatedItemSize={100}
+      estimatedItemSize={341}
       ListFooterComponent={
         <LoadMoreButton
           onPress={handleLoadMore}

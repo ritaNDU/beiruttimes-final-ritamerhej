@@ -25,7 +25,7 @@ const NewsDetails = () => {
   };
   return (
     <ScrollView style={styles.newsDetailsContainer}>
-      <View>
+      <>
         {post ? (
           <PostDetails
             title={post.title}
@@ -42,7 +42,7 @@ const NewsDetails = () => {
             </Text>
           </View>
         )}
-      </View>
+      </>
       <NavigationButton
         name="Go back"
         onPress={goBack}
