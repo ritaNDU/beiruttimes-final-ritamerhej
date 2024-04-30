@@ -26,14 +26,16 @@ const PostDetails = ({
   return (
     <View style={styles.postDetailsContainer}>
       <PostImage imageUrl={image_url} />
-      <View style={styles.titleContainer}>
-        <Text style={styles.postDetailsTitle}>{title}</Text>
-        <Text style={styles.publicationDate}>Published on: {pubDate}</Text>
-      </View>
-      <Text style={styles.decription}>{description}</Text>
-      <View style={styles.readArticleContainer}>
-        <Text>Read full article at: </Text>
-        <NavigationButton name={source} onPress={goToUrl} />
+      <View style={styles.articleContentContainer}>
+        <View style={styles.titleContainer}>
+          <Text style={styles.postDetailsTitle}>{title}</Text>
+          <Text style={styles.publicationDate}>Published on: {pubDate}</Text>
+        </View>
+        <Text style={styles.decription}>{description}</Text>
+        <View style={styles.readArticleContainer}>
+          <Text style={styles.title}>Read full article at: </Text>
+          <NavigationButton name={source} onPress={goToUrl} />
+        </View>
       </View>
     </View>
   );
