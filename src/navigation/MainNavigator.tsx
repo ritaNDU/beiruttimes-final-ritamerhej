@@ -13,17 +13,23 @@ const MainNavigator = () => {
 
   useEffect(() => {
     async function getToken() {
-      const userInfo = await getStoredUserInfo();
-      if (
-        userInfo &&
-        userInfo.accessToken !== '' &&
-        userInfo.refreshToken !== ''
-      ) {
-        signUserIn();
+      try {
+        const userInfo = await getStoredUserInfo();
+        if (
+          userInfo &&
+          userInfo.accessToken !== '' &&
+          userInfo.refreshToken !== ''
+        ) {
+          signUserIn();
+        }
+      } catch (err) {
+        console.log(err);
+      } finally {
+        await BootSplash.hide({fade: true});
+        setIsLoading(false);
       }
-      await BootSplash.hide({fade: true});
-      setIsLoading(false);
     }
+
     getToken();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isUserSignedIn]);
@@ -32,7 +38,6 @@ const MainNavigator = () => {
     return <Loading />;
   }
   if (!isUserSignedIn) {
-    console.log('Stack/');
     return <NativeStackNavigator />;
   } else {
     return <DrawerNavigation />;

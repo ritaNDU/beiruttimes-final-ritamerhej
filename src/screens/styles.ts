@@ -1,6 +1,7 @@
-import {StyleSheet} from 'react-native';
+import {Dimensions, StyleSheet} from 'react-native';
 import theme from '../styles/theme';
 
+const {height} = Dimensions.get('screen');
 const styles = StyleSheet.create({
   todaysNewsContainer: {
     flex: 1,
@@ -22,6 +23,15 @@ const styles = StyleSheet.create({
     top: 10,
     left: 10,
     paddingHorizontal: 10,
+  },
+  errorContainer: {
+    padding: 10,
+    width: '100%',
+    height: height,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 2,
   },
 });
 export default styles;

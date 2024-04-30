@@ -18,16 +18,11 @@ const useManagePostsFetching = () => {
         _id: postsData[key]._id,
         title: postsData[key].title,
         description: postsData[key].description,
-        country: postsData[key].country,
-        creator: postsData[key].creator,
         pubDate: postsData[key].pubDate,
         image_url: postsData[key].image_url,
-        video_url: postsData[key].video_url,
         source_url: postsData[key].source_url,
-        language: postsData[key].language,
         link: postsData[key].link,
         category: postsData[key].category,
-        keywords: postsData[key].keywords,
       };
       posts.push(post);
     }
@@ -37,21 +32,23 @@ const useManagePostsFetching = () => {
   const handleLoadMore = async () => {
     setIsLoading(true);
 
-    const data = await getPostsFromApi(JSON.stringify(page));
-    const postsData: Post[] = data.results;
-    const paginationData = data.pagination;
+    if (!endReached) {
+      const data = await getPostsFromApi(JSON.stringify(page));
+      const postsData: Post[] = data.results;
+      const paginationData = data.pagination;
 
-    if (page > paginationData.totalPages) {
-      setIsLoading(false);
-      setEndReached(true);
-      return;
+      if (page > paginationData.totalPages) {
+        setIsLoading(false);
+        setEndReached(true);
+        return;
+      }
+
+      const posts: Post[] = setPosts(postsData);
+
+      addPosts(posts);
+
+      setPage(prev => prev + 1);
     }
-
-    const posts: Post[] = setPosts(postsData);
-
-    addPosts(posts);
-
-    setPage(prev => prev + 1);
 
     setIsLoading(false);
   };

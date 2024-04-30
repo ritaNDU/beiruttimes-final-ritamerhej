@@ -9,10 +9,14 @@ import theme from '../styles/theme';
 const TodaysNews = () => {
   const {allPosts} = useManagePostsFetching();
 
-  //Here I didn't use useMemo because I know that the posts are only 10
-  const newsToday = allPosts.filter(post => post.category.includes('top'));
+  // Here I didn't use useMemo because I know that the posts are only 10 posts at most here.
+  // So useMemo would have caused an unnecessary overhead.
+  // Those are the top news today.
+  const topNewsToday = allPosts
+    .slice(0, 10)
+    .filter(post => post.category.includes('top'));
+  const top3Post = topNewsToday.slice(0, 3);
 
-  const top3Post = newsToday.slice(0, 3);
   return (
     <ScrollView
       showsHorizontalScrollIndicator={false}
@@ -30,10 +34,10 @@ const TodaysNews = () => {
       </View>
       <View>
         <Text style={styles.title}>What's Happening Today</Text>
-        {newsToday.length === 0 ? (
+        {topNewsToday.length === 0 ? (
           <ActivityIndicator color={theme.colors.textColor} />
         ) : (
-          <ShortPostsList posts={newsToday} />
+          <ShortPostsList posts={topNewsToday} />
         )}
       </View>
     </ScrollView>

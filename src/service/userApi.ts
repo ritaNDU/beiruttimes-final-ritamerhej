@@ -14,9 +14,10 @@ export async function createNewUser(user: User) {
       ...user,
       token_expires_in: TOKEN_EXPIRATION,
     });
-  } catch (e) {
+    Alert.alert('Account created successfully!');
+  } catch (err) {
     Alert.alert("Couldn't create user. You may already be registered.");
-    console.log(e);
+    console.log(err);
   }
 }
 

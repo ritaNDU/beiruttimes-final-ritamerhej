@@ -36,7 +36,11 @@ const NewsDetails = () => {
             source={post.source_url}
           />
         ) : (
-          <Text>Check your internet connection and try again.</Text>
+          <View style={styles.errorContainer}>
+            <Text style={styles.title}>
+              Couldn't get post. Check your internet connection and try again.
+            </Text>
+          </View>
         )}
       </View>
       <NavigationButton
