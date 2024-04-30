@@ -41,16 +41,20 @@ const DrawerNavigation = () => {
         headerTintColor: theme.colors.textColor,
         headerRight: setButtonToHeader,
         headerShadowVisible: false,
-      }}>
+      }}
+      backBehavior="history">
       <Drawer.Screen
         name="NewsToday"
         component={TodaysNews}
-        options={{title: 'News', headerTitleStyle: {display: 'none'}}}
+        options={{
+          title: 'News',
+          headerTitleStyle: {display: 'none'},
+        }}
       />
       <Drawer.Screen
         name="AllNews"
         component={AllNews}
-        options={{title: 'All News'}}
+        options={{title: 'All News', lazy: true}}
       />
       <Drawer.Screen
         name="NewsDetails"

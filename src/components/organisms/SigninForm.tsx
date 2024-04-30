@@ -24,24 +24,22 @@ const SigninForm = () => {
   const handleSignin = async (values: InitialSigninFormType) => {
     setIsLoading(true);
 
-    const tokens = await getUserTokens({
-      email: values.email,
-      password: values.password,
-    });
+    try {
+      const tokens = await getUserTokens({
+        email: values.email,
+        password: values.password,
+      });
 
-    if (tokens) {
-      try {
+      if (tokens) {
         await storeUserInfo(tokens.accessToken, tokens.refreshToken);
         signUserIn();
-      } catch (err) {
-        console.log(err);
-      } finally {
-        setIsLoading(false);
-        return;
       }
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setIsLoading(false);
+      return;
     }
-
-    setIsLoading(false);
   };
 
   return (
