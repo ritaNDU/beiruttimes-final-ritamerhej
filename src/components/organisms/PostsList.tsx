@@ -23,7 +23,7 @@ const PostsList = ({
 }: Props) => {
   const keyExtractor = (item: Post) => item._id;
 
-  const renderItem = itemData => {
+  const renderItem = (itemData: {item: Post}) => {
     return (
       <View>
         <PostCard
@@ -34,6 +34,9 @@ const PostsList = ({
       </View>
     );
   };
+
+  // In the flashlist I know I could've added the onEndReachedThreshold prop to specify the last item
+  // but I didn't because I didn't like the idea much.
   return (
     <FlashList
       renderItem={renderItem}
