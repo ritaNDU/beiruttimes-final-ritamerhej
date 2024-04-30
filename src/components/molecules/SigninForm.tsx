@@ -2,7 +2,6 @@ import {Formik} from 'formik';
 import React, {useState} from 'react';
 import {initialSigninFormValues} from '../../data/formsData';
 import FormInput from '../atoms/Inputs/FormInput';
-import PasswordInputField from '../atoms/Inputs/PasswordInput';
 
 import {SigninSchema} from '../../data/ValidationSchemas/signinSchema';
 import {InitialSigninFormType} from '../../data/formsData.types';
@@ -10,7 +9,6 @@ import useManageUser from '../../hooks/useManageUser';
 import NavigationButton from '../atoms/Buttons/NavigationButton';
 import {getUserTokens} from '../../service/userApi';
 import useManageSecureStorage from '../../hooks/useManageSecureStorage';
-import {Alert} from 'react-native';
 import styles from './molecules.styles';
 
 const handleSubmit =
@@ -25,16 +23,24 @@ const SigninForm = () => {
 
   const handleSignin = async (values: InitialSigninFormType) => {
     setIsLoading(true);
+
     const tokens = await getUserTokens({
       email: values.email,
       password: values.password,
     });
+
     if (tokens) {
-      await storeUserInfo(tokens.accessToken, tokens.refreshToken);
-      signUserIn();
-    } else {
-      Alert.alert('Incorrect credentials. Are you registered?');
+      try {
+        await storeUserInfo(tokens.accessToken, tokens.refreshToken);
+        signUserIn();
+      } catch (err) {
+        console.log(err);
+      } finally {
+        setIsLoading(false);
+        return;
+      }
     }
+
     setIsLoading(false);
   };
 
@@ -54,13 +60,14 @@ const SigninForm = () => {
             touched={touched.email}
           />
 
-          <PasswordInputField
+          <FormInput
             placeholder={'Password'}
             handleChangeText={handleChange('password')}
             handleBlur={handleBlur('password')}
             value={values.password}
             error={errors.password}
             touched={touched.password}
+            isPassword
           />
           <NavigationButton
             onPress={handleSubmit(submitForm)}

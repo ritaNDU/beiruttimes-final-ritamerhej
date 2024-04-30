@@ -30,6 +30,7 @@ const styles = StyleSheet.create({
   buttonGroup: {
     gap: 10,
   },
+  articleContentContainer: {padding: 5, gap: 20},
   postCardContainer: {
     gap: 20,
     marginBottom: Platform.OS === 'ios' ? 0 : 12,

@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import {initialSignupFormValues} from '../../data/formsData';
 import {Formik} from 'formik';
 import FormInput from '../atoms/Inputs/FormInput';
-import PasswordInputField from '../atoms/Inputs/PasswordInput';
 
 import {SignupSchema} from '../../data/ValidationSchemas/signupSchema';
 import {InitialSignupFormType} from '../../data/formsData.types';
@@ -11,7 +10,6 @@ import NavigationButton from '../atoms/Buttons/NavigationButton';
 import {NativeStackNavigatorNavigationProps} from '../../navigation/NativeStackNavigation/NativeStackNavigator.types';
 import {User} from '../../data/user.type';
 import {createNewUser} from '../../service/userApi';
-import {Alert} from 'react-native';
 import styles from './molecules.styles';
 
 const handleSubmit =
@@ -23,7 +21,7 @@ const SignupForm = () => {
   const navigation = useNavigation<NativeStackNavigatorNavigationProps>();
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleSignup = (
+  const handleSignup = async (
     values: InitialSignupFormType,
     {resetForm}: {resetForm: () => void},
   ) => {
@@ -32,11 +30,13 @@ const SignupForm = () => {
       password: values.password,
     };
     setIsLoading(true);
-    createNewUser(user);
-    resetForm();
-    setIsLoading(false);
-    Alert.alert('Account created successfully!');
-    navigation.navigate('SignIn');
+    try {
+      await createNewUser(user);
+      navigation.navigate('SignIn');
+    } finally {
+      resetForm();
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -55,22 +55,24 @@ const SignupForm = () => {
             touched={touched.email}
           />
 
-          <PasswordInputField
+          <FormInput
             placeholder={'Password...'}
             handleChangeText={handleChange('password')}
             handleBlur={handleBlur('password')}
             value={values.password}
             error={errors.password}
             touched={touched.password}
+            isPassword
           />
 
-          <PasswordInputField
+          <FormInput
             placeholder={'Repeat password...'}
             handleChangeText={handleChange('repeatPassword')}
             handleBlur={handleBlur('repeatPassword')}
             value={values.repeatPassword}
             error={errors.repeatPassword}
             touched={touched.repeatPassword}
+            isPassword
           />
 
           <NavigationButton

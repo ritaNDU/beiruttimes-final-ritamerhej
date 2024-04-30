@@ -1,8 +1,17 @@
 import {TextInput, View} from 'react-native';
 import React from 'react';
-import {Props} from './commonsProps';
 import styles from './Input.styles';
 import ErrorText from '../Errors/ErrorText';
+
+export interface Props {
+  placeholder: string;
+  handleChangeText: (e: string | React.ChangeEvent<any>) => void;
+  handleBlur?: (e: any) => void;
+  value: string;
+  error?: string;
+  touched?: boolean;
+  isPassword?: boolean;
+}
 
 const FormInput = ({
   placeholder,
@@ -11,6 +20,7 @@ const FormInput = ({
   value,
   error,
   touched,
+  isPassword,
 }: Props) => {
   return (
     <View>
@@ -21,6 +31,7 @@ const FormInput = ({
         onBlur={handleBlur}
         value={value}
         style={styles.input}
+        secureTextEntry={isPassword}
       />
       {error && touched ? <ErrorText error={error} /> : <></>}
     </View>
