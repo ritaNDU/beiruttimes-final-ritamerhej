@@ -2,7 +2,7 @@ import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
   error: {
-    color: '#000',
+    color: '#ff3333',
     fontWeight: '900',
   },
 });
