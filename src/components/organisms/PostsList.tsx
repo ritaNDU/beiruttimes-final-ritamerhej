@@ -42,7 +42,6 @@ const PostsList = ({
       refreshing={isRefreshing}
       onRefresh={onRefresh}
       onEndReached={handleLoadMore}
-      onEndReachedThreshold={8}
       estimatedItemSize={100}
       ListFooterComponent={
         <LoadMoreButton

@@ -63,6 +63,7 @@ const useManagePostsFetching = () => {
 
     storePosts(posts);
     setPage(2);
+    setEndReached(false);
 
     setIsLoading(false);
   }
@@ -70,7 +71,6 @@ const useManagePostsFetching = () => {
   const handleRefresh = async () => {
     setRefresh(true);
     handleInitialFetch();
-    setEndReached(false);
     setRefresh(false);
   };
 

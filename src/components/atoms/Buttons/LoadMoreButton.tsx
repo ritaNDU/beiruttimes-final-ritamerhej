@@ -7,17 +7,14 @@ type Props = {
   onPress: () => void;
   isLoading: boolean;
   endReached: boolean;
-  name?: string;
 };
 
-const LoadMoreButton = ({name, onPress, isLoading, endReached}: Props) => {
+const LoadMoreButton = ({onPress, isLoading, endReached}: Props) => {
   return (
     <Pressable onPress={onPress} style={styles.loadMoreButtonContainer}>
       <Text style={styles.navigationButtonText}>
         {isLoading ? (
           <ActivityIndicator size={'small'} color={theme.colors.accentColor} />
-        ) : name ? (
-          name
         ) : endReached ? (
           'You have reached the end. Meow!'
         ) : (
