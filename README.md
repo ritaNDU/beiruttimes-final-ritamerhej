@@ -14,7 +14,7 @@ rita@test.com
 
 ## Description
 
-Daily Beirut is a Digital Newspaper. It is available as an application to install on your phone, or as a website you can access using any browser you have available. ]
+Daily Beirut is a Digital Newspaper. It is available as an application to install on your phone, or as a website you can access using any browser you have available. 
 
 This repository provides the Mobile Application version of Daily Beirut.
 The website version is available at this [repository](https://github.com/ritaNDU/dailybeirut-final-web-ritamerhej).
