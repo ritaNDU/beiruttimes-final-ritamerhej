@@ -16,7 +16,7 @@ const LoadMoreButton = ({onPress, isLoading, endReached}: Props) => {
         {isLoading ? (
           <ActivityIndicator size={'small'} color={theme.colors.accentColor} />
         ) : endReached ? (
-          'You have reached the end. Meow!'
+          'You have reached the end'
         ) : (
           'Load More'
         )}
