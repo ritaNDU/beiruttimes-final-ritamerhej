@@ -14,6 +14,7 @@ type Props = {
   endReached: boolean;
   isRefreshing: boolean;
 };
+const keyExtractor = (item: Post) => item._id;
 const PostsList = ({
   posts,
   handleLoadMore,
@@ -22,8 +23,6 @@ const PostsList = ({
   onRefresh,
   isRefreshing,
 }: Props) => {
-  const keyExtractor = (item: Post) => item._id;
-
   const renderItem = (itemData: {item: Post}) => {
     return (
       <View>

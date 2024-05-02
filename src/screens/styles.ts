@@ -2,6 +2,7 @@ import {Dimensions, StyleSheet} from 'react-native';
 import theme from '../styles/theme';
 
 const {height} = Dimensions.get('screen');
+
 const styles = StyleSheet.create({
   todaysNewsContainer: {
     padding: 5,
