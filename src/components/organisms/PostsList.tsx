@@ -3,7 +3,8 @@ import {FlashList} from '@shopify/flash-list';
 import Post from '../../data/post.type';
 import PostCard from '../molecules/PostCard';
 import LoadMoreButton from '../atoms/Buttons/LoadMoreButton';
-import {View} from 'react-native';
+import {ActivityIndicator, View} from 'react-native';
+import theme from '../../styles/theme';
 
 type Props = {
   posts: Post[];
@@ -47,11 +48,17 @@ const PostsList = ({
       onEndReached={handleLoadMore}
       estimatedItemSize={341}
       ListFooterComponent={
-        <LoadMoreButton
-          onPress={handleLoadMore}
-          isLoading={isLoading}
-          endReached={endReached}
-        />
+        <>
+          {posts.length === 0 ? (
+            <ActivityIndicator color={theme.colors.textColor} size="large" />
+          ) : (
+            <LoadMoreButton
+              onPress={handleLoadMore}
+              isLoading={isLoading}
+              endReached={endReached}
+            />
+          )}
+        </>
       }
     />
   );
