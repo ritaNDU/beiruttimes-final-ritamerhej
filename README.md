@@ -23,6 +23,8 @@ To start reading news on Daily Beirut, you have to create an account, login, and
 
 Or, you can use the provided testing account.
 
+Also, a little note, I have kept the console.logs to log errors only, because as of my knowledge, errors should be logged for debugging purposes if anything haopens in production.
+
 ## How to run the code
 
 1. Clone the repository using the following command:
