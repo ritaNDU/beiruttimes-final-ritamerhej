@@ -19,7 +19,9 @@ Daily Beirut is a Digital Newspaper. It is available as an application to instal
 This repository provides the website version of Daily Beirut.
 The website version is available at this [repository](https://github.com/ritaNDU/dailybeirut-final-web-ritamerhej).
 
-To use it, you have to create an account, login, and start reading all the latest news.
+To start reading news on Daily Beirut, you have to create an account, login, and start reading all the latest news.
+
+Or, you can use the provided testing account.
 
 ## How to run the code
 
